@@ -3,12 +3,14 @@
 **1. Single-Column Index:**  
 
 ```CREATE INDEX idx_column_name ON table_name (column_name);```   
-This creates an index on a single column. It is effective when filtering, joining, or ordering based on that column.  
+This creates an index on a single column.  
+It is effective when filtering, joining, or ordering based on that column.  
 
 **2. Composite Index:**  
 
 ```CREATE INDEX idx_column1_column2 ON table_name (column1, column2);```    
-Composite indexes involve multiple columns. They are beneficial when queries involve filtering, joining, or ordering using a combination of those columns.  
+Composite indexes involve multiple columns.  
+They are beneficial when queries involve filtering, joining, or ordering using a combination of those columns.  
 
 **3. Unique Index:**  
 
