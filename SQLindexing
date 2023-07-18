@@ -1,0 +1,17 @@
+## **Indexing columns in SQL to improve query performance**  
+
+**1. Single-Column Index:**  
+
+```CREATE INDEX idx_column_name ON table_name (column_name);``` 
+This creates an index on a single column. It is effective when filtering, joining, or ordering based on that column.  
+
+**2. Composite Index:**  
+
+CREATE INDEX idx_column1_column2 ON table_name (column1, column2);  
+Composite indexes involve multiple columns. They are beneficial when queries involve filtering, joining, or ordering using a combination of those columns.  
+
+**3. Unique Index:**  
+
+CREATE UNIQUE INDEX idx_column_name ON table_name (column_name);  
+A unique index ensures the uniqueness of values in the indexed column(s).  
+It improves query performance when enforcing uniqueness or when performing lookups using the indexed column.
