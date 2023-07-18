@@ -2,16 +2,46 @@
 
 **1. Single-Column Index:**  
 
-```CREATE INDEX idx_column_name ON table_name (column_name);``` 
+```CREATE INDEX idx_column_name ON table_name (column_name);```   
 This creates an index on a single column. It is effective when filtering, joining, or ordering based on that column.  
 
 **2. Composite Index:**  
 
-CREATE INDEX idx_column1_column2 ON table_name (column1, column2);  
+```CREATE INDEX idx_column1_column2 ON table_name (column1, column2);```    
 Composite indexes involve multiple columns. They are beneficial when queries involve filtering, joining, or ordering using a combination of those columns.  
 
 **3. Unique Index:**  
 
-CREATE UNIQUE INDEX idx_column_name ON table_name (column_name);  
+```CREATE UNIQUE INDEX idx_column_name ON table_name (column_name);```   
 A unique index ensures the uniqueness of values in the indexed column(s).  
-It improves query performance when enforcing uniqueness or when performing lookups using the indexed column.
+It improves query performance when enforcing uniqueness or when performing lookups using the indexed column.  
+
+**4. Partial Index:**  
+
+```CREATE INDEX idx_column_name ON table_name (column_name) WHERE condition;```  
+A partial index includes only a subset of rows based on a specified condition.  
+It reduces the index size and improves query performance for specific subsets of data.  
+
+**5. Clustered Index:**
+
+```CREATE CLUSTERED INDEX idx_column_name ON table_name (column_name);```  
+A clustered index determines the physical order of rows in a table.  
+It is suitable for columns used in range scans or queries that benefit from retrieving rows in a specific order.  
+
+**6. Covering Index:**
+
+```CREATE INDEX idx_column1_column2 ON table_name (column1) INCLUDE (column2);```  
+A covering index includes additional non-key columns to cover the query's `SELECT`, `JOIN`, or `WHERE` clauses.  
+It eliminates the need for the database to perform additional lookups in the original table, improving query performance.  
+
+**7. Function-Based Index:**  
+
+```CREATE INDEX idx_function_name ON table_name (function_name(column_name));```  
+Function-based indexes allow indexing based on computed or transformed values of a column.  
+This is useful when queries involve applying functions to indexed columns.  
+
+Effectiveness of indexing depends on various factors, such as the data distribution, query patterns, and the database system being used.  
+It is necessary to carefully analyze queries, identify the columns frequently used in filtering, joining, or ordering, and create indexes accordingly.  
+However, **creating too many indexes can negatively impact performance, as indexes incur maintenance overhead during data modifications**.  
+It's a balancing act to identify the most beneficial indexes while considering the trade-offs.  
+Regular monitoring and fine-tuning of indexes based on query performance are recommended.
